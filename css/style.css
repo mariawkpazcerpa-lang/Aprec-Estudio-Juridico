@@ -13,6 +13,10 @@ html {
   scroll-padding-top: 100px; /* Ajustá este número según la altura de tu menú */
 }
 
+.menu-hamburguesa {
+  display: none;
+}
+
 header {
   background-color: #ffffff;
   display: flex;
@@ -39,19 +43,28 @@ main {
   background-size: cover;
   background-position: top left;
   background-attachment: fixed;
-  padding-top: 1em;
+  padding-top: 1.5em;
   width: 100%;
-  height: 500px;
-  display: flex;
+  min-height: 500px;
+  max-height: 700px;
+  display: grid;
 }
 .hero .col-md-4 {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   justify-content: center;
 }
 .hero .col-md-4 img {
+  max-width: 100%;
+  max-height: 100%;
   filter: invert(1);
   mix-blend-mode: difference;
+}
+.hero .col-md-4 .col-md-8 {
+  display: grid;
+  margin-left: 2em;
+  overflow-wrap: break-word;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .hero-content {
@@ -61,13 +74,21 @@ main {
   padding-right: 1.5em;
   padding-top: 3em;
   gap: 1.3em;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.hero-content h1, .hero-content h4 {
+  filter: invert(1);
+  mix-blend-mode: difference;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Agrega un poco de sombra para mejorar la legibilidad */
 }
 .hero-content button {
   background-color: var(--primary-color);
   border: none;
   padding: 0.5em 1em;
-  width: 40em;
-  height: 3.5em;
+  max-width: 40em;
+  min-width: 10em;
+  height: auto;
   color: #fff;
   font-size: large;
   font-family: "Times New Roman", Times, serif;
@@ -186,6 +207,127 @@ nav button {
   max-width: 3em;
   height: auto;
   border-radius: 4px;
+}
+
+@media only screen and (max-width: 430px) {
+  html {
+    scroll-behavior: smooth; /* Hace que el scroll sea suave */
+    scroll-padding-top: 100px; /* Ajustá este número según la altura de tu menú */
+  }
+  .menu-hamburguesa {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  nav {
+    position: absolute;
+    display: flex;
+    gap: 0.5em;
+    align-items: left;
+    background-color: #ffffff;
+  }
+  nav button {
+    background-color: #ffffff;
+    border: none;
+    padding: 0.2em;
+  }
+  #navbarNav {
+    flex-direction: column;
+    position: fixed;
+    display: none;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 90px);
+    font-family: "Times New Roman", Times, serif;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+    font-size: 1em;
+  }
+  .navbar-nav {
+    z-index: 1100;
+    display: flex;
+    top: 0;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: #ffffff;
+  }
+  #navbarNav.show {
+    display: flex !important;
+  }
+  #navbarNav .nav-link:hover {
+    color: var(--accent-color);
+  }
+  header {
+    background-color: #ffffff;
+    display: flex;
+    padding: 0 0.5em;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .hero {
+    background-image: url("../img/fondo-hero-phonevert.png") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding-top: 1.5em;
+    width: 100%;
+    height: auto;
+    display: grid;
+  }
+  .hero .col-md-4 {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+  .hero .col-md-4 img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: invert(1);
+    mix-blend-mode: difference;
+  }
+  .hero .col-md-4 .col-md-8 {
+    display: grid;
+    margin-left: 2em;
+    overflow-wrap: break-word;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-content {
+    margin-bottom: 2em;
+    display: grid;
+    padding-left: 4em;
+    padding-right: 1.5em;
+    padding-top: 3em;
+    gap: 1.3em;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .hero-content h1, .hero-content h4 {
+    filter: invert(1);
+    mix-blend-mode: difference;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Agrega un poco de sombra para mejorar la legibilidad */
+  }
+  .hero-content button {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 0.5em 1em;
+    width: 15em;
+    height: auto;
+    color: #fff;
+    font-size: large;
+    font-family: "Times New Roman", Times, serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative; /* Obligatorio para que funcione el z-index */
+    z-index: 999;
+  }
+  .hero-content button:hover {
+    background-color: var(--accent-color);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
