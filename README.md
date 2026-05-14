@@ -57,7 +57,7 @@ Este proyecto está bajo la licencia especificada en el archivo LICENSE.
 
 ## 👤 Autor
 
-- **María W K Paz Cerpa** - Desarrollador principal
+- **María de la Paz Cerpa** - Desarrollador principal
 
 ## 📧 Contacto
 
